@@ -11,6 +11,9 @@ from typing import List, Optional
 class UpsertRequest(BaseModel):
     documents: List[Document]
 
+class GetRequest(BaseModel):
+    name: str
+
 
 class UpsertResponse(BaseModel):
     ids: List[str]
@@ -31,4 +34,7 @@ class DeleteRequest(BaseModel):
 
 
 class DeleteResponse(BaseModel):
+    success: bool
+
+class GetResponse(BaseModel):
     success: bool

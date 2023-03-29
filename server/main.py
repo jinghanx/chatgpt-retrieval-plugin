@@ -11,6 +11,7 @@ from models.api import (
     QueryResponse,
     UpsertRequest,
     UpsertResponse,
+    GetResponse,
 )
 from datastore.factory import get_datastore
 from services.file import get_document_from_file
@@ -38,6 +39,15 @@ sub_app = FastAPI(
     dependencies=[Depends(validate_token)],
 )
 app.mount("/sub", sub_app)
+
+@app.post(
+    "/test",
+    response_model=GetResponse,
+)
+async def test(
+    request: UpsertRequest = Body(...),
+):
+    return GetResponse(success=True)
 
 
 @app.post(

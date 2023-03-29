@@ -41,7 +41,7 @@ sub_app = FastAPI(
 )
 app.mount("/sub", sub_app)
 
-@app.post(
+@app.get(
     "/test",
     response_model=GetResponse,
 )
